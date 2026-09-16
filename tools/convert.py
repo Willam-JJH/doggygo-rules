@@ -143,16 +143,37 @@ def main():
         seen[b].add(key)
         groups[b].append((rtype, value))
 
-    # 直连优先级最高: 同一个域名同时出现在 proxy 里就去掉
-    direct_keys = {(t, v.lower()) for t, v in groups["direct"]}
-    before = len(groups["proxy"])
-    groups["proxy"] = [x for x in groups["proxy"] if (x[0], x[1].lower()) not in direct_keys]
-    if before != len(groups["proxy"]):
-        print(f"  [dedupe] proxy 中 {before - len(groups['proxy'])} 条与直连重复,已移除")
-
-    # 苹果基础服务补进直连
+    # 苹果基础服务补进直连(要在下面的去重之前,让它们也能罩住 proxy)
     for d in APPLE_DIRECT:
         groups["direct"].append(("DOMAIN-SUFFIX", d))
+
+    # 直连优先级最高: proxy 里凡是"会被某条直连规则命中"的都去掉。
+    # 不只是同名重复 —— 父域直连(A)也会罩住子域代理(B),反之亦然。
+    # 删掉一条 proxy 规则本身不会改变结果(iOS 默认 final: proxy),
+    # 只是消除"同一个域名在 direct/proxy 两份规则集里打架"的歧义:
+    # 客户端按什么顺序加载规则集我们控制不了,歧义越少越好。
+    d_dom = {v.lower() for t, v in groups["direct"] if t == "DOMAIN"}
+    d_suf = {v.lower().lstrip(".") for t, v in groups["direct"] if t == "DOMAIN-SUFFIX"}
+    d_kw = {v.lower() for t, v in groups["direct"] if t == "DOMAIN-KEYWORD"}
+
+    def covered_by_direct(domain):
+        domain = domain.lower().lstrip(".")
+        if domain in d_dom or domain in d_suf:
+            return True
+        if any(domain.endswith("." + s) for s in d_suf):
+            return True
+        return any(k in domain for k in d_kw)
+
+    def conflict(rule):
+        return rule[0] in ("DOMAIN", "DOMAIN-SUFFIX") and covered_by_direct(rule[1])
+
+    removed = [f"{t},{v}" for t, v in groups["proxy"] if conflict((t, v))]
+    groups["proxy"] = [x for x in groups["proxy"] if not conflict(x)]
+    if removed:
+        print(f"  [dedupe] proxy 中 {len(removed)} 条已被直连规则覆盖,已移除:")
+        for r in removed:
+            print(f"           {r}")
+
     groups["direct"] = sorted(set(groups["direct"]))
 
     for name in ("direct", "reject", "proxy"):

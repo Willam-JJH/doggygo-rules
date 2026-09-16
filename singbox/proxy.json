@@ -3,9 +3,7 @@
   "rules": [
     {
       "domain": [
-        "api.msn.com",
         "api.statsig.com",
-        "assets.msn.com",
         "browser-intake-datadoghq.com",
         "cdn.usefathom.com",
         "chat.openai.com.cdn.cloudflare.net",
@@ -14,7 +12,6 @@
         "gateway.bingviz.microsoft.net",
         "gateway.bingviz.microsoftapp.net",
         "in.appcenter.ms",
-        "onedrive.live.com",
         "openai-api.arkoselabs.com",
         "openaicom-api-bdcpf8c6d2e9atf6.z01.azurefd.net",
         "openaicomproductionae4b.blob.core.windows.net",
@@ -52,7 +49,6 @@
         "discord.com",
         "disneyplus.com",
         "dmoj.ca",
-        "edgeservices.bing.com",
         "etbrains.ai",
         "events.statsigapi.net",
         "featuregates.org",
