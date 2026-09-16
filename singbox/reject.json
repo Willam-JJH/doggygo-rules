@@ -1,0 +1,40 @@
+{
+  "version": 3,
+  "rules": [
+    {
+      "domain_suffix": [
+        "appsflyer.com",
+        "doubleclick.net",
+        "google-analytics.com",
+        "mmstat.com",
+        "ping0.cc",
+        "vungle.com"
+      ],
+      "domain_keyword": [
+        "admarvel",
+        "admaster",
+        "adsage",
+        "adservice",
+        "adsmogo",
+        "adsrvmedia",
+        "adwords",
+        "domob",
+        "duomeng",
+        "dwtrack",
+        "guanggao",
+        "lianmeng",
+        "mopub",
+        "omgmta",
+        "openx",
+        "partnerad",
+        "pingfore",
+        "supersonicads",
+        "uedas",
+        "umeng",
+        "usage",
+        "wlmonitor",
+        "zjtoolbar"
+      ]
+    }
+  ]
+}
