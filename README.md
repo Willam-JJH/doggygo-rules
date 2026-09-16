@@ -31,7 +31,7 @@
 singbox/          ← 客户端要引用的就是这里的 URL
   direct.json     119 条  「直连」
   reject.json      33 条  「reject」
-  proxy.json      127 条  「代理」
+  proxy.json      123 条  「代理」
 text/             ← 同样内容的纯文本格式，万一客户端不认 JSON 可以拿来试
 tools/convert.py  ← 从本机 Clash 配置重新生成上面这些文件
 ```
