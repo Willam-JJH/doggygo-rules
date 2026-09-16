@@ -52,11 +52,6 @@ DOMAIN-SUFFIX,gfx.ms
 DOMAIN-SUFFIX,globalsign.com
 DOMAIN-SUFFIX,google.cn
 DOMAIN-SUFFIX,google.com.cn
-DOMAIN-SUFFIX,googleadservices.com
-DOMAIN-SUFFIX,googleoptimize.com
-DOMAIN-SUFFIX,googlesyndication.com
-DOMAIN-SUFFIX,googletagmanager.com
-DOMAIN-SUFFIX,googleusercontent.com
 DOMAIN-SUFFIX,graph.microsoft.com
 DOMAIN-SUFFIX,hihocoder.com
 DOMAIN-SUFFIX,hotmail.com
@@ -94,7 +89,6 @@ DOMAIN-SUFFIX,qwen.ai
 DOMAIN-SUFFIX,react.docschina.org
 DOMAIN-SUFFIX,redirector.gvt1.com
 DOMAIN-SUFFIX,riotgames.com
-DOMAIN-SUFFIX,safebrowsing.googleapis.com
 DOMAIN-SUFFIX,sfx.ms
 DOMAIN-SUFFIX,sharepoint.com
 DOMAIN-SUFFIX,skype.com
@@ -109,7 +103,6 @@ DOMAIN-SUFFIX,ubi.com
 DOMAIN-SUFFIX,ubisoft.com
 DOMAIN-SUFFIX,unpkg.com
 DOMAIN-SUFFIX,uoj.ac
-DOMAIN-SUFFIX,update.googleapis.com
 DOMAIN-SUFFIX,update.microsoft.com
 DOMAIN-SUFFIX,usertrust.com
 DOMAIN-SUFFIX,vjudge.net
